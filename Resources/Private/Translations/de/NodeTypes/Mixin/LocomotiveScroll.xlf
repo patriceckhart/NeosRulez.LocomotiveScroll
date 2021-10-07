@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file original="" product-name="NeosRulez.LocomotiveScroll" source-language="de" datatype="plaintext">
+        <body>
+            <trans-unit id="groups.locomotiveScroll" xml:space="preserve">
+				<source>Locomotive Scroll</source>
+			</trans-unit>
+            <trans-unit id="properties.enableLocomotiveScroll" xml:space="preserve">
+				<source>Aktivieren</source>
+			</trans-unit>
+            <trans-unit id="properties.dataScrollSpeed" xml:space="preserve">
+				<source>Geschwindigkeit</source>
+			</trans-unit>
+            <trans-unit id="properties.dataScrollDirection" xml:space="preserve">
+				<source>Richtung</source>
+			</trans-unit>
+        </body>
+    </file>
+</xliff>

@@ -1,0 +1,16 @@
+Neos:
+  Neos:
+    fusion:
+      autoInclude:
+        NeosRulez.LocomotiveScroll: true
+    userInterface:
+      translation:
+        autoInclude:
+          NeosRulez.LocomotiveScroll:
+            - 'NodeTypes/Mixin/*'
+NeosRulez:
+  LocomotiveScroll:
+    settings:
+      smooth: true
+      reloadOnContextChange: true
+      scrollFromAnywhere: true

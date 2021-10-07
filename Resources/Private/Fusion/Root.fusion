@@ -1,0 +1,67 @@
+prototype(Neos.Neos:Page) {
+
+    head {
+        locomotiveScrollHeadIncludes = Neos.Fusion:Component {
+            @position = 'end'
+            renderer = afx`
+                <Neos.Fusion:Tag tagName="link" attributes.rel="stylesheet" @children="attributes.href">
+                    <Neos.Fusion:ResourceUri path="resource://NeosRulez.LocomotiveScroll/Public/Assets/locomotive-scroll-4.0.3/dist/locomotive-scroll.min.css" />
+                </Neos.Fusion:Tag>
+            `
+            @if.condition = ${!site.context.inBackend}
+        }
+    }
+
+    locomotiveScrollBodyIncludes = Neos.Fusion:Component {
+        @position = 'end'
+        settings = Neos.Fusion:Loop {
+            items = ${Configuration.setting('NeosRulez.LocomotiveScroll.settings')}
+            itemName = 'setting'
+            itemIterator = 'settingIterator'
+            itemKey = 'settingKey'
+            itemRenderer = ${settingKey + ': ' + (setting ? 'true' : 'false') + (settingIterator.isLast ? '' : ',')}
+        }
+        renderer = afx`
+            <Neos.Fusion:Tag tagName="script" @children="attributes.src">
+                <Neos.Fusion:ResourceUri path="resource://NeosRulez.LocomotiveScroll/Public/Assets/locomotive-scroll-4.0.3/dist/locomotive-scroll.min.js" />
+            </Neos.Fusion:Tag>
+            <script>{"
+                (function () {
+                    var scroll = new LocomotiveScroll();
+                })();
+                const scroll = new LocomotiveScroll({
+                    el: document.querySelector('[data-scroll-container]'),
+                    " + props.settings + "
+                });
+            "}</script>
+        `
+        @if.condition = ${!site.context.inBackend}
+    }
+
+    body.@process.locomotiveScroll = Neos.Fusion:Component {
+
+        renderer = afx`
+            <div data-scroll-container>
+                {value}
+            </div>
+        `
+        @if.condition = ${!site.context.inBackend}
+    }
+
+}
+
+prototype(NeosRulez.LocomotiveScroll:Wrapper) < prototype(Neos.Fusion:Component) {
+    content = ''
+    isScrollable = ${node.properties.enableLocomotiveScroll}
+    dataScrollSpeed = ${String.replace(node.properties.dataScrollSpeed, ',', '.')}
+    direction = ${node.properties.dataScrollDirection}
+
+    renderer = afx`
+        <div @if.render={props.isScrollable && !site.context.inBackend} data-scroll-section>
+            <div data-scroll data-scroll-speed={props.dataScrollSpeed} data-scroll-direction={props.direction} data-scroll-class="appear" data-scroll-repeat="true" >
+                {props.content}
+            </div>
+        </div>
+        {(!props.isScrollable && !site.context.inBackend) || site.context.inBackend ? props.content : ''}
+    `
+}
