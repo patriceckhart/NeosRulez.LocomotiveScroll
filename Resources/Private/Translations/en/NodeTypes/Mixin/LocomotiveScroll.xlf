@@ -5,15 +5,18 @@
             <trans-unit id="groups.locomotiveScroll" xml:space="preserve">
 				<source>Locomotive Scroll</source>
 			</trans-unit>
-            <trans-unit id="properties.enableLocomotiveScroll" xml:space="preserve">
-				<source>Enable</source>
-			</trans-unit>
             <trans-unit id="properties.dataScrollSpeed" xml:space="preserve">
 				<source>Speed</source>
 			</trans-unit>
             <trans-unit id="properties.dataScrollDirection" xml:space="preserve">
 				<source>Direction</source>
 			</trans-unit>
+            <trans-unit id="properties.dataScrollDirection.selectBoxEditor.values.horizontal" xml:space="preserve">
+                <source>Horizontal</source>
+            </trans-unit>
+            <trans-unit id="properties.dataScrollDirection.selectBoxEditor.values.vertical" xml:space="preserve">
+                <source>Vertical</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

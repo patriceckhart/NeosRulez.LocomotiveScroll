@@ -12,5 +12,3 @@ NeosRulez:
   LocomotiveScroll:
     settings:
       smooth: true
-      reloadOnContextChange: true
-      scrollFromAnywhere: true
